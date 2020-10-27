@@ -1,0 +1,34 @@
+li {
+    list-style: none;
+}
+.item {
+    position: relative;
+}
+.text {
+    /* box-sizing: border-box; */
+    color: #61dafb;
+    margin: 0;
+    margin: 15px 70px;
+}
+.text.done {
+    color: #416e7c;
+    text-decoration: line-through;
+}
+.fa-circle,
+.fa-times,
+.fa-check-circle {
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.fa-circle,
+.fa-check-circle {
+    left: 35px;
+    color: #5cfc8d;
+}
+.fa-times {
+    right: 20px;
+    color: #e6244a;
+}

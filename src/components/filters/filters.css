@@ -1,0 +1,44 @@
+.count {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.item-left {
+    color: #61dafb;
+    font-size: 18px;
+}
+.filter {
+    border: 1px solid transparent;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: #416e7c;
+    font-size: 15px;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 5px 5px 20px #191c21, 
+               -2px -2px 5px #373c47;
+    margin: 0 5px;
+}
+.filter:hover {
+    border: 1px solid #46899b;
+}
+.filter.--on {
+    color: #61dafb;
+    border: 1px solid #53bbd8;
+}
+.clear {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    box-shadow: 10px 10px 20px #191c21, 
+               -10px -10px 20px #373c47;
+}
+.fa-sync-alt {
+    color: #e6244a;
+}

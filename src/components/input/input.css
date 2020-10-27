@@ -1,0 +1,62 @@
+.input-wrapper {
+  position: relative;
+}
+.input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 20px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
+  padding-left: 70px;
+  font-size: 20px;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+.plus-button {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  position: absolute;
+  left: 35px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  box-shadow: 10px 10px 20px #191c21, 
+             -10px -10px 20px #373c47;
+}
+.fa-plus {
+  color: #5cfc8d;
+}
+
+.input::-webkit-input-placeholder {
+  color: #536369;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  font-style: italic;
+}
+.input::-moz-placeholder {
+  color: #536369;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  font-style: italic;
+}
+.input:-ms-input-placeholder {
+  color: #536369;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  font-style: italic;
+}
+.input:-moz-placeholder {
+  color: #536369;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  font-style: italic;
+}
