@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO } from '../constants';
+import { ADD_TODO, DELETE_TODO, COMPLETE_TODO } from '../constants';
 
 
 const ITEMS = [
@@ -34,7 +34,7 @@ const ITEMS = [
     }
   ];
 
-const  tasks = (state = ITEMS, { id, text, done, type }) => {
+const tasks = (state = ITEMS, { id, text, done, type }) => {
     switch (type) {
         case ADD_TODO:
             return [
@@ -44,6 +44,13 @@ const  tasks = (state = ITEMS, { id, text, done, type }) => {
                     done
                 }
             ];
+        case COMPLETE_TODO:
+          return [...state].map(task => {
+            if (task.id == id) {
+              task.done = !task.done;
+            }
+            return task;
+          });
         case DELETE_TODO:
           return [...state].filter(task => task.id !== id);
         default:
