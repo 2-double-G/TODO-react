@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addToDo } from '../../actions/actionCreator';
+import { addToDo, deleteToDo, completeToDo } from '../../actions/actionCreator';
 
 import FilterButtons from '../filters/filters';
 import Input from '../input/input';
@@ -37,13 +37,13 @@ class TODO extends Component {
 
     render() {
         const { filter, taskText } = this.state;
-        const { tasks } = this.props;
+        const { tasks, deleteToDo, completeToDo } = this.props;
         const isTasksExist = tasks && tasks.length > 0;
 
         return (
             <div className="wrapper">
                 {isTasksExist && <FilterButtons count={tasks.length} active={filter} />}
-                {isTasksExist && <List tasksList={tasks} />}
+                {isTasksExist && <List completeToDo={completeToDo} tasksList={tasks} deleteToDo={deleteToDo}/>}
               <Input onKeyPress={this.addToDo} onChange={this.handleInputChange} value={taskText}/>
             </div>
           );
@@ -52,4 +52,4 @@ class TODO extends Component {
 
 export default connect(state => ({
   tasks: state.tasks,
-}), { addToDo })(TODO);
+}), { addToDo, deleteToDo, completeToDo })(TODO);

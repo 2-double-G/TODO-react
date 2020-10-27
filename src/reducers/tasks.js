@@ -1,4 +1,4 @@
-import { ADD_TODO } from '../constants';
+import { ADD_TODO, DELETE_TODO } from '../constants';
 
 
 const ITEMS = [
@@ -36,7 +36,7 @@ const ITEMS = [
 
 const  tasks = (state = ITEMS, { id, text, done, type }) => {
     switch (type) {
-        case ADD_TODO :
+        case ADD_TODO:
             return [
                 ...state, {
                     id,
@@ -44,8 +44,10 @@ const  tasks = (state = ITEMS, { id, text, done, type }) => {
                     done
                 }
             ];
+        case DELETE_TODO:
+          return [...state].filter(task => task.id !== id);
         default:
-            return state;
+          return state;
     }
 }
 

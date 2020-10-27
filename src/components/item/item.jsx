@@ -3,21 +3,25 @@ import propTypes from 'prop-types';
 
 import './item.css';
 
-const Item = ({ text, done }) => (
+const Item = ({ text, done, deleteToDo, id, completeToDo }) => (
     <li className="item">
-        <i className={done ? "far fa-check-circle" : "far fa-circle"}></i>
+        <i onClick={() => completeToDo(id)} className={done ? "far fa-check-circle" : "far fa-circle"}></i>
         <p className={done ? "text done" : "text"}>{text}</p>
-        <i className="fas fa-times"></i> 
+        <i onClick={() => deleteToDo(id)} className="fas fa-times"></i> 
     </li>
 );
 
 Item.propTypes = {
     text: propTypes.string,
-    done: propTypes.bool
+    done: propTypes.bool,
+    deleteToDo: propTypes.func,
+    id: propTypes.string,
 }
 Item.defaultProp = {
     text: "",
-    done: false
+    done: false,
+    deleteToDo: () => {},
+    id: "",
 }
 
 export default Item;
