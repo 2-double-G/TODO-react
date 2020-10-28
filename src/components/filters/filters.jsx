@@ -18,12 +18,13 @@ const BTNS = [
     }
 ];
 
-const Filter = ({ count, active }) => (
+const Filter = ({ count, active, changeFilter }) => (
     <div className="count">
         <span className="item-left">{count <= 1 ? `${count} item left` : `${count} items left` }</span>
         <div>
             {BTNS.map(({ id, value }) => (
                 <button
+                    onClick={() => {changeFilter(id)}}
                     key={id}
                     className={id === active ? "filter --on" : 'filter'}>{value}</button>
             ))}
@@ -38,11 +39,13 @@ const Filter = ({ count, active }) => (
 Filter.propTypes = {
     count: PropTypes.number,
     active: PropTypes.string,
+    changeFilter: PropTypes.func
 }
   
 Filter.defaultProps = {
     count: 0,
     active: 'all',
+    changeFilter: () => {}
 }
 
 export default Filter;

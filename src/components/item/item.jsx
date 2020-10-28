@@ -15,13 +15,13 @@ Item.propTypes = {
     text: propTypes.string,
     done: propTypes.bool,
     deleteToDo: propTypes.func,
-    id: propTypes.string,
+    id: propTypes.number,
 }
 Item.defaultProp = {
     text: "",
     done: false,
     deleteToDo: () => {},
-    id: "",
+    id: 0,
 }
 
 export default Item;

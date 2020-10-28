@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addToDo, deleteToDo, completeToDo } from '../../actions/actionCreator';
+import { addToDo, deleteToDo, completeToDo, changeFilter } from '../../actions/actionCreator';
 
 import FilterButtons from '../filters/filters';
 import Input from '../input/input';
@@ -11,7 +11,6 @@ import './main.css'
 
 class TODO extends Component {
     state = {
-        filter: 'all',
         taskText: ''
     }
 
@@ -35,21 +34,38 @@ class TODO extends Component {
       }
     }
 
+    filterTasks = (tasks, active) => {
+      switch (active) {
+        case 'completed':
+          return tasks.filter(task => task.done);
+        case 'active':
+          return tasks.filter(task => !task.done);
+        default:
+          return tasks;
+      }
+    }
+
+    getActiveTasksCounter = tasks => tasks.filter(task => !task.done).length;
+
+
     render() {
-        const { filter, taskText } = this.state;
-        const { tasks, deleteToDo, completeToDo } = this.props;
+        const { taskText } = this.state;
+        const { tasks, deleteToDo, completeToDo, filters, changeFilter } = this.props;
         const isTasksExist = tasks && tasks.length > 0;
+        const filteredTasks = this.filterTasks(tasks, filters);
+        const taskCounter = this.getActiveTasksCounter(tasks);
 
         return (
             <div className="wrapper">
-                {isTasksExist && <FilterButtons count={tasks.length} active={filter} />}
-                {isTasksExist && <List completeToDo={completeToDo} tasksList={tasks} deleteToDo={deleteToDo}/>}
+                {isTasksExist && <FilterButtons changeFilter={changeFilter} count={taskCounter} active={filters} />}
+                {isTasksExist && <List completeToDo={completeToDo} tasksList={filteredTasks} deleteToDo={deleteToDo}/>}
               <Input onKeyPress={this.addToDo} onChange={this.handleInputChange} value={taskText}/>
             </div>
           );
     }
 }
 
-export default connect(state => ({
-  tasks: state.tasks,
-}), { addToDo, deleteToDo, completeToDo })(TODO);
+export default connect(({ tasks, filters}) => ({
+  tasks,
+  filters
+}), { addToDo, deleteToDo, completeToDo, changeFilter })(TODO);
